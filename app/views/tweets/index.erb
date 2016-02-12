@@ -3,12 +3,12 @@
 
 
   <div class="page-header">
-    <h1><%= @user.name %> <span class="badge"><%= @tweets.count + @retweets.count %> tweets</span></h1>
-    
+    <h1><%= @user.name %> <span class="badge"><%= @user.tweets.count + @user.retweets.count %> tweets</span></h1>
+
 
   </div>
 
-  <% @tweets.each do |tweet| %>
+  <% @user.tweets.each do |tweet| %>
     <div class="well">
       <h4><%= tweet.post %></h4>
 
@@ -24,7 +24,7 @@
     </p>
 
 
-    <% unless @@USER_ID == @user.id %>
+    <% unless session[:user_id] == @user.id %>
       <a href="/users/<%= @user.id %>/retweets/<%= tweet.id %>/new">Retweet</a>
     <% end %>
 
@@ -32,7 +32,7 @@
   <% end %>
 
 
-  <% @retweets.each do |retweet| %>
+  <% @user.retweets.each do |retweet| %>
     <div class="col-md-12" style="text-align: right;">
     </div>
     <div class="well">
