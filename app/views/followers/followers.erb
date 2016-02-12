@@ -1,7 +1,7 @@
-<h2>You are being followed <%= @user.followers.length %> users</h2>
+<h2>You are being followed by <%= @user.followers.length %> users</h2>
 
 <ul><% @user.followers.each do |followers|%>
-<li> <a href="/users/<%= followers.id %>"></a><%= followers.username%> </li>
+<li> <a href="/users/<%= followers.id %>"><%= followers.username%></a> </li>
 
 <%end%>
 </ul>
