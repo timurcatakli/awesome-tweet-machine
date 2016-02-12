@@ -1,7 +1,7 @@
 post '/users/:user_id/tweets/' do
 
 
-  @user = User.find(params[:user_id])
+  @user = User.find(session[:user_id])
   @tweet = Tweet.create(post: params[:post], user_id: @user.id)
 
   if @tweet.save
@@ -21,7 +21,7 @@ end
 
 get '/users/:user_id/tweets' do
 
-  @user = User.find(params[:user_id])
+  @user = User.find(15)
 
   @recent_tweets = []
   @recent_tweets << @user.tweets

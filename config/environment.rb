@@ -39,7 +39,7 @@ use Rack::Session::Cookie, key: 'rack.session',
                            domain: '',
                            path: '/',
                            user_id: 1,
-                           expire_after: 60, # in seconds
+                           expire_after: 600000000, # in seconds
                            secret: 'ssshhhh'
 
 

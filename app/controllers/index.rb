@@ -17,7 +17,6 @@ end
 post '/' do
 
   error = ""
-<<<<<<< HEAD
   user = User.authenticate(params[:username], params[:password])
 
   if  user == false
