@@ -1,8 +1,9 @@
  <h2>Follow someone new</h2>
  <form action="/users/<%=@user.id%>/following/new" method = "post">
   <input type="hidden" name="_method" value="put">
-  <% if @unknown_user %>
+  <% if @error == "Unknown user" %>
     <p>ERROR: The username you entered does not exist. Please try again.</p>
+
   <% end %><br>
   <label>Enter the username of the user you'd like to follow</label><br>
   <input type="text" name="following">
