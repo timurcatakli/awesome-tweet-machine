@@ -11,11 +11,11 @@ end
 get '/users/:user_id/following' do
   @user = User.find(params[:user_id])
 
-  erb :'views/following'
+  erb :'views/followers/following'
 end
 
 get '/user/:user_id/followers' do
   @user = User.find(params[:user_id])
 
-  erb :'views/followers'
+  erb :'views/followers/followers'
 end

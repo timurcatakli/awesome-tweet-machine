@@ -1,1 +1,8 @@
-<h2>You are following <%= @user.following %></h2>
+<h2>You are following <%= @user.following.length %> users</h2>
+
+<ul><% @user.following.each do |following|%>
+<li> <a href="/users/<%= following.id %>"></a><%= following.username%> </li>
+
+<%end%>
+</ul>
+
