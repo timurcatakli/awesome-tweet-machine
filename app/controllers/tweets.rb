@@ -21,7 +21,7 @@ end
 
 get '/users/:user_id/tweets' do
 
-  @user = User.find(15)
+  @user = User.find(params[:user_id])
 
   @recent_tweets = []
   @recent_tweets << @user.tweets
