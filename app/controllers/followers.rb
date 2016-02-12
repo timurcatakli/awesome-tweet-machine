@@ -1,11 +1,11 @@
-post '/users/:user_id/followers/:id' do
+put '/users/:user_id/followers/:id' do
   user = User.find(params[:user_id])
   following = User.find(params[:id])
 
   user.following << following
   user.save
 
-  redirect '/users/user_id/followers'
+  redirect "/users/#{user.id}/followers"
 end
 
 get '/users/:user_id/following' do
