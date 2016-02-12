@@ -31,10 +31,13 @@ post '/users' do
 end
 
 # catch who is logged in and send to page that displays folks they're following
-get '/users/index' do
-  # @logged_in_user = User.find(session[:user_id])
-  redirect "/users/#{session[:user_id]}/following/tweets"
-end
+# get '/users/index' do
+#     p "*" * 80
+#   p params.inspect
+#   p session.inspect
+#   @logged_in_user = User.find(session[:user_id])
+#   redirect "/users/#{@logged_in_user.id}/following/tweets"
+# end
 
 get '/users/:id' do #User has a profile page
   p "*" * 80

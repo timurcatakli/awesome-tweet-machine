@@ -35,15 +35,11 @@ configure do
   enable :sessions
 
 
-use Rack::Session::Cookie, key: 'rack.session',
-                           domain: '',
-                           path: '/',
-                           user_id: 1,
-                           expire_after: 60, # in seconds
-                           secret: 'ssshhhh'
+# use Rack::Session::Cookie, key: 'rack.session',
+#                            secret: 'ssshhhh'
 
 
-  set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
+#   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
