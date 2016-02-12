@@ -1,38 +1,46 @@
 
 <div style="margin:50px;">
 
-
-<script>
-$(document).ready(function() {
-    var text_max = 140;
-    $('#textarea_feedback').html(text_max + ' characters remaining');
-
-    $('#textarea').keyup(function() {
-        var text_length = $('#textarea').val().length;
-        var text_remaining = text_max - text_length;
-
-        $('#textarea_feedback').html(text_remaining + ' characters remaining');
-    });
-});
-
+<script language=JavaScript>
+<!--
+function check_length(my_form)
+{
+maxLen = 140; // max number of characters allowed
+if (my_form.post.value.length >= maxLen) {
+// Alert message if maximum limit is reached. 
+// If required Alert can be removed. 
+var msg = "You have reached your maximum limit of characters allowed";
+alert(msg);
+// Reached the Maximum length so trim the textarea
+  my_form.post.value = my_form.post.value.substring(0, maxLen);
+ }
+else{ // Maximum length not reached so update the value of post counter
+  my_form.text_num.value = maxLen - my_form.post.value.length;
+}
+}
+//-->
 </script>
 
-<form action="/users/<%= session[:user_id] %>/tweets/" method="post">
+<div class="col-sm-4" >
+  
+  <div class="col-sm-12" >
+    <form name="my_form" action="/users/<%= session[:user_id] %>/tweets/" method="post">
+    
+      <textarea onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); id="textarea" autofocus name="post"  maxlength="140" required rows="6" cols="60" placeholder="What's happening <%= @user.name %>?"></textarea>
+
+  </div>
+
+  <div class="col-sm-6" >
+      <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+
+  <div class="col-sm-6" >
+      <input size=4 value=140 name=text_num> Characters Left
+    </form>
+  </div>
 
 
-
-  <textarea id="textarea" autofocus name="post"  maxlength="140" required rows="4" cols="50">What's happening <%= @user.name %>?</textarea>
-<div id="textarea_feedback"></div>
-
-
-  <br>
-  <input type="submit" value="Submit">
-</form>
-<!-- tweet form ends here -->
 
 </div>
-
-
-
 
 
