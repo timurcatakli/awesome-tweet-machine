@@ -1,0 +1,14 @@
+ <h2>The following users match your search</h2>
+<ul><% @search_results.each do |user|%>
+<li><%= user.name %><br> <a href="/users/<%= user.id %>"><%= user.username%></a> </li>
+<form action='/users/<%=@user.id%>/followers/<%= user.id %>'method="post" >
+<input name="_method" type="hidden" value="put" />
+<button type='submit'>Follow</button>
+</form>
+
+<%end%>
+</ul>
+
+<form action="/users/<%= @user.id %>/tweets" method='get'>
+  <button  class= "btn btn-secondary btn-lg active" type="submit">Back</button>
+</form>
