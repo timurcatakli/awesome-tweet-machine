@@ -6,6 +6,7 @@ put '/users/:user_id/followers/:id' do
   @user.save
 
   redirect "/users/#{@user.id}/followers"
+end
 
 delete '/users/:user_id/following/:id' do
   @user = User.find(params[:user_id])
