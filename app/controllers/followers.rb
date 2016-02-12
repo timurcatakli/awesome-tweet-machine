@@ -5,7 +5,7 @@ post '/users/:user_id/followers/:id' do
   user.following << following
   user.save
 
-  redirect '/users/user_id/followers' do
+  redirect '/users/user_id/followers'
 end
 
 get '/users/:user_id/following' do
