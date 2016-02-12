@@ -2,6 +2,7 @@
 <div id="posts">
 
   <a href="/users/<%=@user.id%>">See your profile</a><br>
+
   <% total_users = User.all.count %>
 
   <a href="/users/<%=@user.id%>/following/new">Discover a new tweeter!</a>
