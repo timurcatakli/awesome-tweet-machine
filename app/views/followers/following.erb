@@ -1,7 +1,7 @@
 <h2>You are following <%= @user.following.length %> users</h2>
 
 <ul><% @user.following.each do |following|%>
-<li> <a href="/users/<%= following.id %>/tweets"><%= following.username%></a> </li>
+<li> <a href="/users/<%= following.id %>"><%= following.username%></a> </li>
 <form action='/users/<%=@user.id%>/following/<%= following.id %>'method="post" >
 <input name="_method" type="hidden" value="delete" />
 <button type='submit'>Unfollow</button>
@@ -9,4 +9,9 @@
 
 <%end%>
 </ul>
+
+<form action="/users/<%= @user.id %>/tweets" method='get'>
+  <button  class= "btn btn-secondary btn-lg active" type="submit">Back</button>
+</form>
+
 

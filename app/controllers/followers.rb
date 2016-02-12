@@ -1,7 +1,6 @@
 put '/users/:user_id/followers/:id' do
   @user = User.find(params[:user_id])
   @following = User.find(params[:id])
-
   @user.following << @following
   @user.save
 
@@ -25,16 +24,24 @@ get '/users/:user_id/following/new' do
   erb :'/followers/follow_new'
 end
 
-put '/users/:user_id/following/new' do
-  p params
+get '/users/:user_id/following/search' do
   @user = User.find(params[:user_id])
-  @following = User.find_by(username: params[:following])
+
+  @search_results = User.where("name like ?", "%#{params[:name]}%")
+
+ erb :'followers/search'
+end
+
+put '/users/:user_id/following/new' do
+p params
+  @user = User.find(params[:user_id])
+
+   @following = User.find_by(username: params[:username])
+
 
   if @following == nil
     @error = "Unknown user"
     erb :'/followers/follow_new'
-  elsif @user.following.include? (@following)
-    @error = "Already following"
   else
     @user.following << @following
     redirect "/users/#{params[:user_id]}/following"
