@@ -20,7 +20,9 @@ post '/' do
   if  user == false
   	redirect "/?error=invalidpassword"
   else
-  	session[:user_id] = user.username
+  	session[:user_id] = user.id
+    p "*******" * 10
+    p session.inspect
   	redirect '/'
   end
 

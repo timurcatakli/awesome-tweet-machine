@@ -1,8 +1,10 @@
+# create a new user
 get '/users/new' do
   @error = params[:error_message]
   erb :'users/new'
 end
 
+# create a new user
 post '/users' do
   @new_user = User.new(name: params[:name], email: params[:email], username: params[:username])
   @new_user.password = params[:password]
@@ -24,21 +26,26 @@ post '/users' do
     redirect "/users/new?error_message=#{error_message}"
   end
 
-  session[:user_id] = @new_user.username
+  session[:user_id] = @new_user.id
   redirect '/'
 end
 
+# catch who is logged in and send to page that displays folks they're following
 get '/users/index' do
-  @logged_in_user = User.find(2) #delete once session is ready
-  # @logged_in_user = User.find(session[:user_id])
-  # redirect :'/users/:user_id/followeds/tweets'
+  @logged_in_user = User.find(session[:user_id])
   redirect "/users/#{@logged_in_user.id}/following/tweets" #fix this to contain logged in user's id
 end
 
 get '/users/:id' do #User has a profile page
-  @logged_in_user = User.find(2) #delete once session is ready
-  # @logged_in_user = User.find(session[:user_id])
+  p "*******" * 10
+  p session.inspect
+
+  @logged_in_user = User.find(session[:user_id])
+  p "*******" * 10
+  p @logged_in_user
   @user = User.find(params[:id])
+  p "*******" * 10
+  p @user
   erb :'users/profile'
 end
 
