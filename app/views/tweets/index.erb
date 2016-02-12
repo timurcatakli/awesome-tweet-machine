@@ -39,6 +39,7 @@
       <button type="button" class="btn btn-xs btn-success">Success</button> -->
       <button type="button" style="text-align: right;" class="btn btn-xs btn-success">Posted on: <%= tweet.created_at %></button>
       <button type="button" class="btn btn-xs btn-warning">Tweet id: <%= tweet.id %></button>
+
 <!--       <button type="button" class="btn btn-xs btn-danger">Danger</button>
       <button type="button" class="btn btn-xs btn-link">Link</button> -->
     </p>
@@ -57,14 +58,15 @@
     </div>
     <div class="well">
       <h4><%= Tweet.find(retweet.tweet_id).post %></h4>
-      <button type="button" class="btn btn-xs btn-info">Retweet</button>
-    </div>
+      </div>
     <p style="text-align: right;">
 <!--   <button type="button" class="btn btn-xs btn-info">Date</button>
       <button type="button" class="btn btn-xs btn-primary">Primary</button>
       <button type="button" class="btn btn-xs btn-success">Success</button> -->
       <button type="button" style="text-align: right;" class="btn btn-xs btn-success">Posted on: <%= retweet.created_at %></button>
       <button type="button" class="btn btn-xs btn-warning">retweet id: <%= retweet.id %></button>
+      <button type="button" class="btn btn-xs btn-info">Retweet</button>
+
 <!--       <button type="button" class="btn btn-xs btn-danger">Danger</button>
       <button type="button" class="btn btn-xs btn-link">Link</button> -->
     </p>
