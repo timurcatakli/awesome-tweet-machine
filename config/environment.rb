@@ -1,3 +1,5 @@
+@@USER_ID = 1
+
 # Set up gems listed in the Gemfile.
 # See: http://gembundler.com/bundler_setup.html
 #      http://stackoverflow.com/questions/7243486/why-do-you-need-require-bundler-setup
@@ -31,6 +33,16 @@ configure do
   set :root, APP_ROOT.to_path
   # See: http://www.sinatrarb.com/faq.html#sessions
   enable :sessions
+
+
+use Rack::Session::Cookie, key: 'rack.session',
+                           domain: '',
+                           path: '/',
+                           user_id: 1,
+                           expire_after: 60, # in seconds
+                           secret: 'ssshhhh'
+
+
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to
