@@ -1,17 +1,11 @@
-<h1>New User Registration</h1>
+<div class="container theme-showcase" role="main">
 
-<% error_message = "" %>
-<% if @error == 'dupe_email' %>
-  <% error_message = "There is already a user account registered with that email address" %>
-<% elsif @error == 'dupe_user' %>
-  <% error_message = "The requested username has already been taken.  Please select a new username" %>
-<% end %>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h2>Register Now...</h2>
+        <%= erb :_registration_form %>
+  </div>
 
-<%= error_message %>
-<form action="/users" method="POST">
-  Full Name: <input type="text" name="name" required><br>
-  Email:     <input type="email" name="email" required><br>
-  Username:  <input type="text" name="username" required><br>
-  Password:  <input type="password" name="password" required><br>
-  <input type="submit" value="Sign Me Up!">
-</form>
+</div> <!-- /container -->
+
+

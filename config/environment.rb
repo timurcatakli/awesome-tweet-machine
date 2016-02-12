@@ -35,10 +35,6 @@ configure do
   enable :sessions
 
 
-# use Rack::Session::Cookie, key: 'rack.session',
-#                            secret: 'ssshhhh'
-
-
 #   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to

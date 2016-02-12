@@ -22,6 +22,15 @@ post '/users' do
     end
   end
 
+  p '=' * 50
+  p params
+  p '=' * 50
+
+
+  p '=' * 50
+  p error_message
+  p '=' * 50
+
   if error_message != ""
     redirect "/users/new?error_message=#{error_message}"
   end
