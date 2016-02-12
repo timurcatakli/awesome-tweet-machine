@@ -1,6 +1,6 @@
 get '/' do
   if session[:user_id]
-  	redirect '/users/index'
+  	redirect "users/#{session[:user_id]}/following/tweets"
   end
 
   @error = params[:error]
