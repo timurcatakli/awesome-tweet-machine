@@ -1,0 +1,28 @@
+<div style="margin:50px;">
+
+
+<form action="/users/<%= @user.id %>/tweets/" method="post">
+  <textarea autofocus name="tweet"  maxlength="140" required rows="4" cols="50">What's happening <%= @user.name %>?</textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+
+</div>
+
+
+<input disabled  maxlength="3" size="3" value="140" id="counter">
+<textarea onkeyup="textCounter(this,'counter',140);" id="message">
+</textarea>
+<script>
+function textCounter(field,field2,maxlimit)
+{
+ var countfield = document.getElementById(field2);
+ if ( field.value.length > maxlimit ) {
+  field.value = field.value.substring( 0, maxlimit );
+  return false;
+ } else {
+  countfield.value = maxlimit - field.value.length;
+ }
+}
+</script>

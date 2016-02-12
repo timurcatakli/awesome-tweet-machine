@@ -1,0 +1,15 @@
+
+<div id="profile_info">
+  <%= @user.name %>
+  <%= @user.username %>
+  <%= @user.image %>
+</div>
+
+<div id="posts">
+
+  <% @user.tweets.each do |tweet| %>
+  <%= tweet.post %>
+  <hr>
+  <% end %>
+
+</div>
