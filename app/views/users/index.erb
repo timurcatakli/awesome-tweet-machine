@@ -1,11 +1,54 @@
-<h1> Welcome to your Awesome Tweet Machine </h1>
-<div id="posts">
+<div class="container theme-showcase" role="main">
+
+
+  <div class="page-header">
+
+      <h1><%= @user.name %> <span class="badge"><%= @recent_tweets.count %> tweets</span></h1>
+
+      <form action="/users/<%= @@USER_ID %>/followers/<%=@user.id%>" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <!-- Contextual button for informational alert messages -->
+        <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        Follow <%= @user.name %></button>
+       
+      </form>
+
+  </div>
+
 
   <% @recent_tweets.each do |tweet| %>
-  <h3><a href="/users/<%=tweet.user.id%>"><%= tweet.user.name %>:</a></h3>
-  <%= tweet.post %><br>
-  <%= tweet.created_at.httpdate %>
-  <hr>
+    <div class="well">
+      <% if tweet.class == Tweet %>
+      <h4><%= tweet.post %></h4>
+      <% elsif tweet.class == Retweet %>
+      <h4><%= tweet.tweet.post %></h4>
+      <span class="label label-info">retweet</span>
+      <% end %>
+
+    </div>
+    <p style="text-align: right;">
+    <% unless @@USER_ID == @user.id %>
+      
+    <% end %>
+
+
+      <button type="button" style="text-align: right;" class="btn btn-xs btn-info">
+        <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+      <a href="/users/<%= @user.id %>/retweets/<%= tweet.id %>/new">Retweet</a></button>
+
+      <button type="button" style="text-align: right;" class="btn btn-xs btn-success">
+        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+        Posted on: <%= tweet.created_at.httpdate %></button>
+
+      <button type="button" class="btn btn-xs btn-warning">
+        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+        Tweet id: <%= tweet.id %></button>
+    </p>
+
+
+
+    <hr style ="border: 1px dotted #cccccc; margin-top: 40px; margin-bottom: 40px; width: 100%;">
   <% end %>
 
-</div>
+
+</div> <!-- /container -->
