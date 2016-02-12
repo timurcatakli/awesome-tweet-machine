@@ -22,6 +22,15 @@ post '/users' do
     end
   end
 
+  p '=' * 50
+  p params
+  p '=' * 50
+
+
+  p '=' * 50
+  p error_message
+  p '=' * 50
+
   if error_message != ""
     redirect "/users/new?error_message=#{error_message}"
   end
@@ -31,27 +40,38 @@ post '/users' do
 end
 
 # catch who is logged in and send to page that displays folks they're following
-get '/users/index' do
-  @logged_in_user = User.find(session[:user_id])
-  redirect "/users/#{@logged_in_user.id}/following/tweets" #fix this to contain logged in user's id
-end
+# get '/users/index' do
+#     p "*" * 80
+#   p params.inspect
+#   p session.inspect
+#   @logged_in_user = User.find(session[:user_id])
+#   redirect "/users/#{@logged_in_user.id}/following/tweets"
+# end
 
 get '/users/:id' do #User has a profile page
-  p "*******" * 10
+  p "*" * 80
+  p "users/id"
+  p params.inspect
   p session.inspect
-
   @logged_in_user = User.find(session[:user_id])
-  p "*******" * 10
-  p @logged_in_user
   @user = User.find(params[:id])
-  p "*******" * 10
-  p @user
-  erb :'users/profile'
+  erb :'tweets/index'
 end
 
 get '/users/:user_id/following/tweets' do
-  @user = User.find(params[:user_id])
+  p "*" * 80
+
+  p params.inspect
+  p session.inspect
+  @user = User.find(session[:user_id])
   @following = @user.following
+  p "FOLLOWING"
+  p @following
+
+  if @following == []
+    redirect "users/#{@user.id}"
+  end
+
   @recent_tweets = []
 
   @following.each do |user|

@@ -1,13 +1,25 @@
-
+This is the PROFILE PAGE
 <div id="profile_info">
   <h1><%= @user.name %></h1>
   <h2><%= @user.username %></h2>
   <%= @user.image %>
+</div>
+<div id="follows">
+  <% if @logged_in_user == @user %>
+
+  <a href="/users/<%=@logged_in_user.id%>/followers">View Followers</a><br>
+
+  <a href="/users/<%=@logged_in_user.id%>/following">You're following...</a><br>
+
+  <a href="/users/<%=@logged_in_user.id%>/tweets/new">Make a new Post</a><br>
+
+  <% else %>
 
 <form action="/users/<%=@logged_in_user.id%>/followers/<%=@user.id%>" method="POST">
   <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="Follow!">
 </form>
+  <% end %>
 
 </div>
 

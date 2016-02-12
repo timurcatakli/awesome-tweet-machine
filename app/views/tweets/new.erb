@@ -1,7 +1,7 @@
-<% require 'faker' %>
+
 <div style="margin:50px;">
 
-<!-- tweet form starts here -->
+
 <script>
 $(document).ready(function() {
     var text_max = 140;
@@ -17,18 +17,12 @@ $(document).ready(function() {
 
 </script>
 
-<form action="/users/<%= @@USER_ID %>/tweets/" method="post">
+<form action="/users/<%= session[:user_id] %>/tweets/" method="post">
 
 
 
   <textarea id="textarea" autofocus name="post"  maxlength="140" required rows="4" cols="50">What's happening <%= @user.name %>?</textarea>
 <div id="textarea_feedback"></div>
-
-
-
-
-
-
 
 
   <br>

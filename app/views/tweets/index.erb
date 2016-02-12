@@ -3,12 +3,28 @@
 
 
   <div class="page-header">
-    <h1><%= @user.name %> <span class="badge"><%= @tweets.count + @retweets.count %> tweets</span></h1>
-    
+    <h1><%= @user.name %> <span class="badge"><%= @user.tweets.count + @user.retweets.count %> tweets</span></h1>
+      <% if @user == @user %>
+
+  <a href="/users/<%=@user.id%>/followers" class="btn btn-secondary btn-lg active" role="button">View Followers</a><br>
+
+  <a href="/users/<%=@user.id%>/following" class="btn btn-secondary btn-lg active" role="button">You're following...</a><br>
+
+  <a href="/users/<%=@user.id%>/tweets/new" class="btn btn-secondary btn-lg active" role="button">Make a new Post</a><br>
+
+  <% else %>
+
+<form action="/users/<%=@user.id%>/followers/<%=@user.id%>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="submit" value="Follow!">
+</form>
+  <% end %>
+
+
 
   </div>
 
-  <% @tweets.each do |tweet| %>
+  <% @user.tweets.each do |tweet| %>
     <div class="well">
       <h4><%= tweet.post %></h4>
 
@@ -24,7 +40,7 @@
     </p>
 
 
-    <% unless @@USER_ID == @user.id %>
+    <% unless session[:user_id] == @user.id %>
       <a href="/users/<%= @user.id %>/retweets/<%= tweet.id %>/new">Retweet</a>
     <% end %>
 
@@ -32,7 +48,7 @@
   <% end %>
 
 
-  <% @retweets.each do |retweet| %>
+  <% @user.retweets.each do |retweet| %>
     <div class="col-md-12" style="text-align: right;">
     </div>
     <div class="well">

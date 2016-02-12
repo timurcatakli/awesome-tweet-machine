@@ -1,4 +1,4 @@
-@@USER_ID = 1
+# USER_ID = 1
 
 # Set up gems listed in the Gemfile.
 # See: http://gembundler.com/bundler_setup.html
@@ -35,15 +35,7 @@ configure do
   enable :sessions
 
 
-use Rack::Session::Cookie, key: 'rack.session',
-                           domain: '',
-                           path: '/',
-                           user_id: 1,
-                           expire_after: 60, # in seconds
-                           secret: 'ssshhhh'
-
-
-  set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
+#   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")

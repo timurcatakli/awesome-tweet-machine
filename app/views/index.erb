@@ -1,17 +1,27 @@
-<h1>Login</h1>
 
-<% error_message = "" %>
-<% if @error == 'invalidpassword' %>
-  <% error_message = "Invalid username/password combination.  Please try again" %>
-<% end %>
+<div class="container theme-showcase"  role="main">
 
-<%= error_message %>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h3>Welcome to our most awesome</h3>
+    <h1>Twitter App</h1>
+  </div>
 
-<form action="/" method="POST">
-  Username:  <input type="text" name="username" required><br>
-  Password:  <input type="password" name="password" required><br>
-  <input type="submit" value="Sign In!">
-</form>
+    <div class="col-sm-6" >
+    <h3>Login Now</h3>
+    <br>
+    <%= erb :_login_form %>
+  </div>
+  <div class="col-sm-6" >
+    <h3>Not a member, yet?</h3>
+    <br>
+    <p>Click below to register. It is easy and free...</p>
 
-<br>
-<a href="/users/new">Create an Account</a>
+    <p><a href="/users/new" class="btn btn-primary" role="button">Register Now!</a></p>
+
+
+
+  </div>
+
+
+</div> <!-- /container -->

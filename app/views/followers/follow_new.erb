@@ -3,11 +3,16 @@
   <input type="hidden" name="_method" value="put">
   <% if @error == "Unknown user" %>
     <p>ERROR: The username you entered does not exist. Please try again.</p>
-
   <% end %><br>
   <label>Enter the username of the user you'd like to follow</label><br>
-  <input type="text" name="following">
+  <input type="text" name="username">
+  <input type="submit"><br>
+ </form>
+ <br>
+
+
+ <form action="/users/<%=@user.id%>/following/search" method = "get">
+   <label>Or search users by name</label><br>
+  <input type='text' name='name'>
   <input type="submit">
-
-
  </form>

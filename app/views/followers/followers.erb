@@ -4,4 +4,7 @@
 <li> <a href="/users/<%= followers.id %>"><%= followers.username%></a> </li>
 
 <%end%>
+<form action="/users/<%= @user.id %>/tweets" method='get'>
+  <button  class= "btn btn-secondary btn-lg active" type="submit">Back</button>
+</form>
 </ul>
