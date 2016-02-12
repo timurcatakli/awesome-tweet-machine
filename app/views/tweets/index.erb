@@ -14,7 +14,7 @@
 <a href="/users/<%=@user.id%>/tweets/new" role="button"><button  type="button" class="btn btn-primary">Make a New Post</button></a>
 &nbsp;&nbsp;
 <a href="/users/<%=@user.id%>/following/new" role="button"><button  type="button" class="btn btn-primary">Discover a new tweeter!</button></a>
-    
+
 
   <% else %>
 
@@ -32,7 +32,7 @@
     <div class="well">
       <h4><%= tweet.post %></h4>
     </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="btn-group pull-right" role="group" aria-label="Basic example">
         <% unless session[:user_id] == @user.id %>
         <form style="display: inline-block" action="/users/<%=@user.id%>/retweets/<%=tweet.id%>/new" method="POST">
         <input type="hidden" name="_method" value="PUT">
@@ -43,6 +43,7 @@
         <button type="button" class="btn btn-xs btn-warning">Tweet id: <%= tweet.id %></button>
       </div>
   <% end %>
+  <br>
 
 
     <hr style ="border: 1px dotted #cccccc; margin-top: 40px; margin-bottom: 40px; width: 100%;">
@@ -54,7 +55,7 @@
     </div>
     <div class="well">
       <h4><%= Tweet.find(retweet.tweet_id).post %></h4>
-      <h5><%= Tweet.find(retweet.tweet_id).user.username %></h5>
+      <h5>-- <%= Tweet.find(retweet.tweet_id).user.username %></h5>
       </div>
     <p style="text-align: right;">
 <!--   <button type="button" class="btn btn-xs btn-info">Date</button>
@@ -62,7 +63,7 @@
       <button type="button" class="btn btn-xs btn-success">Success</button> -->
       <button type="button" style="text-align: right;" class="btn btn-xs btn-success">Posted on: <%= retweet.created_at %></button>
       <button type="button" class="btn btn-xs btn-warning">retweet id: <%= retweet.id %></button>
-      <button type="button" class="btn btn-xs btn-info">Retweet</button>
+      <button type="button" class="btn btn-xs btn-info">Retweeted</button>
 
 <!--       <button type="button" class="btn btn-xs btn-danger">Danger</button>
       <button type="button" class="btn btn-xs btn-link">Link</button> -->
