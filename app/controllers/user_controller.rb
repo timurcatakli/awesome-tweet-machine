@@ -46,7 +46,7 @@ get '/users/:id' do #User has a profile page
   p session.inspect
   @logged_in_user = User.find(session[:user_id])
   @user = User.find(params[:id])
-  erb :'users/profile'
+  erb :'tweets/index'
 end
 
 get '/users/:user_id/following/tweets' do
