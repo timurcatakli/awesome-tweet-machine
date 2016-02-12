@@ -4,7 +4,7 @@
   <a href="/users/<%=@user.id%>">See your profile</a><br>
   <% total_users = User.all.count %>
 
-  <a href="/users/<%=rand(1..total_users)%>">Discover a new tweeter!</a>
+  <a href="/users/<%=@user.id%>/following/new">Discover a new tweeter!</a>
 
   <% @recent_tweets.each do |tweet| %>
   <h3><a href="/users/<%=tweet.user.id%>"><%= tweet.user.name %>:</a></h3>
