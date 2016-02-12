@@ -33,22 +33,12 @@ end
 end
 
 26.times do
-  user1 = User.find(rand(1..13))
-  user2 = User.find(rand(1..13))
+  user1 = User.all.sample(1)[0]
+  user2 = User.all.sample(1)[0]
 
-  user1.followers << user2 if user1 != user2
-
-  user1.save
-  user2.save
-end
-
-
-
-26.times do
-  user1 = User.find(rand(1..13))
-  user2 = User.find(rand(1..13))
-
-  user2.followers << user1 if user1 != user2
+  if user1.id != user2.id
+    user1.followers << user2 unless user1.followers.include? user2
+  end
 
   user1.save
   user2.save
