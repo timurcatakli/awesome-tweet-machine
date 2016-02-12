@@ -6,15 +6,15 @@
     <h1><%= @user.name %> <span class="badge"><%= @user.tweets.count + @user.retweets.count %> tweets</span></h1>
 
     <% if session[:user_id] == @user.id %>
-    <div class="btn-group" role="group" aria-label="Basic example">
-    <a href="/users/<%=@user.id%>/followers" class="btn btn-  secondary btn-lg active" role="button">View Followers</a>
 
-    <a href="/users/<%=@user.id%>/following" class="btn btn-  secondary btn-lg active" role="button">You're following...</a>
-
-    <a href="/users/<%=@user.id%>/tweets/new" class="btn btn- secondary btn-lg active" role="button">Make a new Post</a>
-
-    <a href="/users/<%=@user.id%>/following/new" class="btn btn-  secondary btn-lg active" role="button">Discover a new tweeter!</a>
-    </div>
+<a href="/users/<%=@user.id%>/followers" role="button"><button  type="button" class="btn btn-primary">View Followers</button></a>
+&nbsp;&nbsp;
+<a href="/users/<%=@user.id%>/following" role="button"><button  type="button" class="btn btn-primary">You're Following</button></a>
+&nbsp;&nbsp;
+<a href="/users/<%=@user.id%>/tweets/new" role="button"><button  type="button" class="btn btn-primary">Make a New Post</button></a>
+&nbsp;&nbsp;
+<a href="/users/<%=@user.id%>/following/new" role="button"><button  type="button" class="btn btn-primary">Discover a new tweeter!</button></a>
+    
 
   <% else %>
 
