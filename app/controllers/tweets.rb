@@ -14,7 +14,7 @@ end
 
 
 get '/users/:user_id/tweets/new' do
-  @user = User.find(@@USER_ID)
+  @user = User.find(session[:user_id])
   erb :'tweets/new'
 end
 
@@ -39,7 +39,7 @@ end
 get '/users/:user_id/retweets/:tweet_id/new' do
 
   @retweet = Retweet.create(tweet_id: params[:tweet_id], user_id: @@USER_ID)
-  @user = User.find(@@USER_ID)
+  @user = User.find(session[:user_id])
   @tweets = @user.tweets
   erb :'tweets/index'
 end

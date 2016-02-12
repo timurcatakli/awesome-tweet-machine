@@ -1,4 +1,4 @@
-@@USER_ID = 1
+# USER_ID = 1
 
 # Set up gems listed in the Gemfile.
 # See: http://gembundler.com/bundler_setup.html
