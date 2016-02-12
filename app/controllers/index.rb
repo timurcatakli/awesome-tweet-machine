@@ -21,9 +21,9 @@ post '/' do
   	redirect "/?error=invalidpassword"
   else
   	session[:user_id] = @user.id
-    p "*******" * 10
+    p "*" * 80
     p session.inspect
-  	redirect '/'
+  	redirect "/users/#{@user.id}/following/tweets"
   end
 
 end
