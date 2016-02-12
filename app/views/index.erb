@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<% error_message = "" %>
+<% if @error == 'invalidpassword' %>
+  <% error_message = "Invalid username/password combination.  Please try again" %>
+<% end %>
+
+<%= error_message %>
+
+<form action="/" method="POST">
+  Username:  <input type="text" name="username" required><br>
+  Password:  <input type="password" name="password" required><br>
+  <input type="submit" value="Sign In!">
+</form>
+
+<br>
+<a href="/users/new">Create an Account</a>
