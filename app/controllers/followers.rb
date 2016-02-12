@@ -2,10 +2,10 @@ put '/users/:user_id/followers/:id' do
   @user = User.find(params[:user_id])
   @following = User.find(params[:id])
 
-  @user.following << following
+  @user.following << @following
   @user.save
 
-  redirect "/users/#{@user.id}/followers"
+  redirect "/users/#{@user.id}/following"
 end
 
 
@@ -31,8 +31,10 @@ put '/users/:user_id/following/new' do
   @following = User.find_by(username: params[:following])
 
   if @following == nil
-    @unknown_user = true
+    @error = "Unknown user"
     erb :'/followers/follow_new'
+  elsif @user.following.include? (@following)
+    @error = "Already following"
   else
     @user.following << @following
     redirect "/users/#{params[:user_id]}/following"
