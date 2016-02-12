@@ -16,11 +16,11 @@ end
 
 post '/' do
   error = ""
-  user = User.authenticate(params[:username], params[:password])
-  if  user == false
+  @user = User.authenticate(params[:username], params[:password])
+  if  @user == false
   	redirect "/?error=invalidpassword"
   else
-  	session[:user_id] = user.id
+  	session[:user_id] = @user.id
     p "*******" * 10
     p session.inspect
   	redirect '/'

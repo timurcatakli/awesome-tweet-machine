@@ -1,6 +1,11 @@
 <h1> Welcome to your Awesome Tweet Machine </h1>
 <div id="posts">
 
+  <a href="/users/<%=@user.id%>">See your profile</a><br>
+  <% total_users = User.all.count %>
+
+  <a href="/users/<%=@user.id%>/following/new">Discover a new tweeter!</a>
+
   <% @recent_tweets.each do |tweet| %>
   <h3><a href="/users/<%=tweet.user.id%>"><%= tweet.user.name %>:</a></h3>
   <%= tweet.post %><br>
