@@ -1,6 +1,6 @@
 get '/users/new' do
   p "*" * 50
-  # @error message logic
+  @error = params[:error_message]
   erb :'users/new'
 end
 
@@ -11,6 +11,27 @@ post '/users' do
   p @new_user
   p @new_user.errors.count
   p @new_user.errors
+  @error_message = ""
+  if @new_user.errors.messages[:email]
+    if @new_user.errors.messages[:email].include? "has already been taken"
+      # duplicate email
+      @error_message = "dupe_email"
+    end
+  end
+
+  if @new_user.errors.messages[:username]
+    if @new_user.errors.messages[:username].include? "has already been taken"
+      # duplicate username
+      @error_message = "dupe_user"
+    end
+  end
+
+  if @error_message != ""
+    redirect "/users/new?error_message=#{@error_message}"
+  end
+
+  "SUCCESSFUL REGISTRATION"
+
 end
 
 get '/users/index' do
