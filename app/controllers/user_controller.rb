@@ -29,6 +29,7 @@ post '/users' do
 end
 
 get '/users/index' do
+  p session
   @logged_in_user = User.find(2) #delete once session is ready
   # @logged_in_user = User.find(session[:user_id])
   # redirect :'/users/:user_id/followeds/tweets'
@@ -43,6 +44,8 @@ get '/users/:id' do #User has a profile page
 end
 
 get '/users/:user_id/following/tweets' do
+  p params
+  p session.inspect
   @user = User.find(params[:user_id])
   @following = @user.following
   @recent_tweets = []

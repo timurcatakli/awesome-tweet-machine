@@ -1,6 +1,6 @@
 post '/users/:user_id/tweets/' do
 
-  
+
   @user = User.find(params[:user_id])
   @tweet = Tweet.create(post: params[:post], user_id: @user.id)
 
@@ -13,17 +13,25 @@ post '/users/:user_id/tweets/' do
 end
 
 
-get '/users/:user_id/tweets/new' do 
+get '/users/:user_id/tweets/new' do
   @user = User.find(@@USER_ID)
   erb :'tweets/new'
 end
 
 
-get '/users/:user_id/tweets' do 
+get '/users/:user_id/tweets' do
 
   @user = User.find(params[:user_id])
-  @tweets = @user.tweets
-  @retweets = @user.retweets
+
+  @recent_tweets = []
+  @recent_tweets << @user.tweets
+  @recent_tweets << @user.retweets
+  # @tweets = @user.tweets
+  # @retweets = @user.retweets
+
+  @recent_tweets.flatten!
+
+  @recent_tweets = @recent_tweets.sort! {|x, y| y.created_at <=> x.created_at} if @recent_tweets.length > 1
   erb :'tweets/index'
 
 end
@@ -46,5 +54,5 @@ end
 #       @article = @new_article
 #     @secret_key = rand(1000...9999).to_s
 #     erb :'articles/article_show'
-#     # redirect "/categories/#{params[:category_id]}/articles/new" 
+#     # redirect "/categories/#{params[:category_id]}/articles/new"
 # end
