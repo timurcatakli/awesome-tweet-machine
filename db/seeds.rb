@@ -10,11 +10,14 @@ require_relative '../app/models/tweet'
 
 13.times do
   name = Faker::Name.name
-  User.create( name: name,
+  user = User.create( name: name,
                 username: Faker::Internet.user_name(name),
                 email: Faker::Internet.safe_email(name)
                 )
-
+  tweet = Tweet.create(post: Faker::Lorem.sentence(4))
+  user.tweets << tweet
+  user.save
+  tweet.save
 end
 
 13.times do
