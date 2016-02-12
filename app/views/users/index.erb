@@ -1,17 +1,24 @@
+<div class="container theme-showcase" role="main">
+
 <h1> Welcome to your Awesome Tweet Machine </h1>
 <div id="posts">
 
-  <a href="/users/<%=@user.id%>">See your profile</a><br>
+  <div class="btn-group" role="group" aria-label="Basic example">
+  <a href="/users/<%=@user.id%>" class="btn btn-  secondary btn-lg active" role="button">See your profile</a>
 
-  <% total_users = User.all.count %>
-
-  <a href="/users/<%=@user.id%>/following/new">Discover a new tweeter!</a>
+  <a href="/users/<%=@user.id%>/following/new" class="btn btn-  secondary btn-lg active" role="button">Discover a new tweeter!</a>
+</div>
 
   <% @recent_tweets.each do |tweet| %>
-  <h3><a href="/users/<%=tweet.user.id%>"><%= tweet.user.name %>:</a></h3>
+  <h2><a href="/users/<%=tweet.user.id%>"><%= tweet.user.username %> Posted:</a></h2>
+  <div class="well">
   <%= tweet.post %><br>
-  <%= tweet.created_at.httpdate %>
-  <hr>
+  </div>
+  <button type="button" style="text-align: right;" class="btn btn-xs btn-success">Posted on: <%= tweet.created_at.httpdate %></button>
+  <button type="button" class="btn btn-xs btn-warning">Tweet id: <%= tweet.id %></button>
+
   <% end %>
 
 </div>
+
+</div> <!-- /container -->
