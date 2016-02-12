@@ -1,28 +1,44 @@
+<% require 'faker' %>
 <div style="margin:50px;">
 
+<!-- tweet form starts here -->
+<script>
+$(document).ready(function() {
+    var text_max = 140;
+    $('#textarea_feedback').html(text_max + ' characters remaining');
 
-<form action="/users/<%= @user.id %>/tweets/" method="post">
-  <textarea autofocus name="tweet"  maxlength="140" required rows="4" cols="50">What's happening <%= @user.name %>?</textarea>
+    $('#textarea').keyup(function() {
+        var text_length = $('#textarea').val().length;
+        var text_remaining = text_max - text_length;
+
+        $('#textarea_feedback').html(text_remaining + ' characters remaining');
+    });
+});
+
+</script>
+
+<form action="/users/<%= @@USER_ID %>/tweets/" method="post">
+
+
+
+  <textarea id="textarea" autofocus name="post"  maxlength="140" required rows="4" cols="50">What's happening <%= @user.name %>?</textarea>
+<div id="textarea_feedback"></div>
+
+
+
+
+
+
+
+
   <br>
   <input type="submit" value="Submit">
 </form>
-
+<!-- tweet form ends here -->
 
 </div>
 
 
-<input disabled  maxlength="3" size="3" value="140" id="counter">
-<textarea onkeyup="textCounter(this,'counter',140);" id="message">
-</textarea>
-<script>
-function textCounter(field,field2,maxlimit)
-{
- var countfield = document.getElementById(field2);
- if ( field.value.length > maxlimit ) {
-  field.value = field.value.substring( 0, maxlimit );
-  return false;
- } else {
-  countfield.value = maxlimit - field.value.length;
- }
-}
-</script>
+
+
+
