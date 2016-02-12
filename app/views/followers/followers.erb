@@ -1,7 +1,28 @@
+<div class="container theme-showcase" role="main">
+
 <h2>You are being followed by <%= @user.followers.length %> users</h2>
 
-<ul><% @user.followers.each do |followers|%>
-<li> <a href="/users/<%= followers.id %>"><%= followers.username%></a> </li>
+
+<% @user.followers.each do |followers|%>
+
+<div class="row">
+
+<h2>
+<img src="http://giuliofidente.com/images/gravatar_to140.png" width="50px">
+<a href="/users/<%= followers.id %>"><%= followers.username%></a>
+</h2>
+</div>
+<br><br>
 
 <%end%>
-</ul>
+
+</div>
+
+
+
+
+
+
+
+
+
