@@ -15,15 +15,20 @@ get '/bootstrap' do
 end
 
 post '/' do
+
   error = ""
   user = User.authenticate(params[:username], params[:password])
+
   if  user == false
   	redirect "/?error=invalidpassword"
   else
   	session[:user_id] = user.id
-    p "*******" * 10
-    p session.inspect
   	redirect '/'
   end
 
+end
+
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
 end

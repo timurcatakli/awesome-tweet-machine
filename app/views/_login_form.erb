@@ -1,9 +1,13 @@
 <% error_message = "" %>
 <% if @error == 'invalidpassword' %>
   <% error_message = "Invalid username/password combination.  Please try again" %>
-<% end %>
+<br>
+<div class="alert alert-danger" role="alert">Ohh snap!! <%= error_message %></div>
 
-<%= error_message %>
+
+
+  
+<% end %>
 
 
 <form action="/" method="post">

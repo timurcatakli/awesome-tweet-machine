@@ -1,13 +1,18 @@
 <% error_message = "" %>
 <% if @error == 'dupe_email' %>
   <% error_message = "There is already a user account registered with that email address" %>
-<% elsif @error == 'dupe_user' %>
-  <% error_message = "The requested username has already been taken.  Please select a new username" %>
-<% end %>
-
 <br>
 <div class="alert alert-danger" role="alert">Ohh snap!! <%= error_message %></div>
 <br>
+
+<% elsif @error == 'dupe_user' %>
+  <% error_message = "The requested username has already been taken.  Please select a new username" %>
+<br>
+<div class="alert alert-danger" role="alert">Ohh snap!! <%= error_message %></div>
+<br>
+  
+<% end %>
+
 
 <form action="/users" method="POST">
   <fieldset class="form-group">
