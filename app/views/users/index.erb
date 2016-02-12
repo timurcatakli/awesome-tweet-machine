@@ -16,6 +16,11 @@
   </div>
   <button type="button" style="text-align: right;" class="btn btn-xs btn-success">Posted on: <%= tweet.created_at.httpdate %></button>
   <button type="button" class="btn btn-xs btn-warning">Tweet id: <%= tweet.id %></button>
+  <form action="/users/<%=@user.id%>/retweets/<%=tweet.id%>/new" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="submit" class="btn btn-xs btn-primary" value="Retweet!">
+
+</form>
 
   <% end %>
 
