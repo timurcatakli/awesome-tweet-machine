@@ -17,7 +17,7 @@ get '/users/index' do
   @logged_in_user = User.find(2) #delete once session is ready
   # @logged_in_user = User.find(session[:user_id])
   # redirect :'/users/:user_id/followeds/tweets'
-  redirect '/users/1/followeds/tweets' #fix this to contain logged in user's id
+  redirect "/users/#{@logged_in_user.id}/following/tweets" #fix this to contain logged in user's id
 end
 
 get '/users/:id' do #User has a profile page

@@ -2,6 +2,10 @@
 
 <ul><% @user.following.each do |following|%>
 <li> <a href="/users/<%= following.id %>"></a><%= following.username%> </li>
+<form action='/users/:user_id/following/<%= following.id %>'method="post" >
+<input name="_method" type="hidden" value="delete" />
+<button type='submit'>Unfollow</button>
+</form>
 
 <%end%>
 </ul>
