@@ -36,9 +36,9 @@ get '/users/:user_id/tweets' do
 
 end
 
-get '/users/:user_id/retweets/:tweet_id/new' do
+put '/users/:user_id/retweets/:tweet_id/new' do
 
-  @retweet = Retweet.create(tweet_id: params[:tweet_id], user_id: @@USER_ID)
+  @retweet = Retweet.create(tweet_id: params[:tweet_id], user_id: session[:user_id])
   @user = User.find(session[:user_id])
   @tweets = @user.tweets
   erb :'tweets/index'
